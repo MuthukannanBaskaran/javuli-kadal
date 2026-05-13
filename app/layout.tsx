@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "@/assets/styles/globals.css"
-import { APP_NAME, APP_DESCRIPTION, SERVER_URL } from "@/lib/constants";
+
+import "@/assets/styles/globals.css";
+
+import {
+  APP_NAME,
+  APP_DESCRIPTION,
+  SERVER_URL
+} from "@/lib/constants";
+
+import { ThemeProvider } from "@/components/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,10 +23,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    template: `%s | Online Orders`, default: APP_NAME
+    template: `%s | Online Orders`,
+    default: APP_NAME,
   },
-  description: `${APP_DESCRIPTION}`,
-  metadataBase: new URL(SERVER_URL)
+  description: APP_DESCRIPTION,
+  metadataBase: new URL(SERVER_URL),
 };
 
 export default function RootLayout({
@@ -30,8 +39,13 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
