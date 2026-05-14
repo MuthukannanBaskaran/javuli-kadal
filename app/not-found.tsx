@@ -11,7 +11,7 @@ const NotFound = () => {
                 <div className="p-6 w-1/3 rounded-lg shadow-md text-center"></div>
                 <h1 className="text-3xl font-bold mb-4">Not Found</h1>
                 <p className="text-destructive">Could not find requested page</p>
-                <Button variant='outline' className="mt-4 ml-2">
+                <Button variant='outline' className="mt-4 ml-2" asChild>
                     <Link href="/">
                         Back To Home
                     </Link>
