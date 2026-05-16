@@ -15,6 +15,5 @@ export async function getLatestProducts() {
         orderBy: { createdAt: 'desc' }
     });
 
-    console.log("data", data);
     return data;
 }
